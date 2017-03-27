@@ -1,0 +1,23 @@
+<kendo-grid [data]="view | async" [height]="460" [pageable]="true" [pageSize]="gridState.take" [skip]="gridState.skip" (dataStateChange)="onStateChange($event)"
+    (add)="addHandler($event)" (edit)="editHandler($event)" (remove)="removeHandler($event)" [sortable]="{ mode: 'single' }"
+    [sort]="gridState.sort">
+    <kendo-grid-toolbar>
+        <button kendoGridAddCommand>Add new</button>
+    </kendo-grid-toolbar>
+    <kendo-grid-column field="firstName" title="First Name"></kendo-grid-column>
+    <kendo-grid-column field="lastName" title="Last Name"></kendo-grid-column>
+    <kendo-grid-column field="email" title="Email"></kendo-grid-column>
+    <kendo-grid-column field="dateOfBirth" title="Date of Birth"></kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <template>
+            <button kendoGridEditCommand class="k-primary">Edit</button>
+            <button kendoGridRemoveCommand>Delete</button>
+        </template>
+    </kendo-grid-command-column>
+</kendo-grid>
+
+<kendo-grid-edit-form [model]="editDataItem" [isNew]="isNew" (save)="saveHandler($event)" (cancel)="cancelHandler()">
+</kendo-grid-edit-form>
+
+
+<div kendoDialogContainer></div>
